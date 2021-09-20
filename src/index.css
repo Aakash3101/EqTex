@@ -73,15 +73,15 @@ math-field {
 .buttons {
   margin-top: 2.5rem;
   margin-left: 9rem;
-  flex-basis: 25%;
+  flex-wrap: wrap;
 }
 
 .add {
-  height: 45%;
-  width: 25%;
+  height: 2.5rem;
+  width: 3rem;
 }
 
 .delete {
-  height: 45%;
-  width: 25%;
+  height: 2.5rem;
+  width: 3rem;
 }

@@ -17,7 +17,7 @@ const reducer = (state, action) => {
 };
 
 const defaultState = {
-  cells: [{ id: 1, defaultContent: "\\frac{1}{2}" }],
+  cells: [{ id: 1, defaultContent: "\\frac{1}{2}", title: "## New Equation" }],
 };
 
 const Workspace = () => {
@@ -27,6 +27,7 @@ const Workspace = () => {
     const newCell = {
       id: new Date().getTime().toString(),
       defaultContent: "x^2 + 3x + 2 = 0",
+      title: "## New Equation",
     };
     dispatch({ type: "ADD_CELL", payload: newCell });
   };
@@ -43,6 +44,7 @@ const Workspace = () => {
             key={cell.id}
             order={cell.id}
             content={cell.defaultContent}
+            title={cell.title}
             add={addCell}
             remove={removeCell}
           />
