@@ -49,12 +49,6 @@ const Cell = ({ order, content, title, add, remove }) => {
 
   return (
     <div className="cell">
-      {/* <textarea
-        className="output"
-        placeholder="Title"
-        rows="3"
-        style={{ width: "97%" }}
-      /> */}
       <MDtitle title={title} />
       <math-field ref={inputRef}>{latex}</math-field>
       <div className="button-grid">
