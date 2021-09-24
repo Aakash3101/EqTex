@@ -9,7 +9,7 @@ const buttonsList = [
   { id: 5, name: "Operators", type: "operators" },
   { id: 6, name: "Logic", type: "logic" },
   { id: 7, name: "Arrows (1)", type: "arrows1" },
-  { id: 7, name: "Arrows (2)", type: "arrows2" },
+  { id: 8, name: "Arrows (2)", type: "arrows2" },
 ];
 
 const Sidebar = () => {
