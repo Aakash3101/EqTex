@@ -42,7 +42,7 @@ const reducer = (state, action) => {
   }
 };
 
-let defaultState = {
+const defaultState = {
   cells: [
     {
       id: new Date().getTime().toString(),

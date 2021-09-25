@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useContext,
+  useCallback,
+} from "react";
 import "mathlive";
 import MDEditor from "@uiw/react-md-editor";
 import { CellContext } from "./App";
@@ -37,31 +43,29 @@ const Cell = ({ index, add, remove }) => {
   const order = cellContext.state.cells[index].id;
   const title = cellContext.state.cells[index].title;
   const content = cellContext.state.cells[index].defaultContent;
-  const [latex, setLatex] = useState(content);
-  const outputRef = useRef("");
-  const inputRef = useRef("");
-  const inputChange = (ev) => {
-    outputRef.current.value = ev.target.value;
-    setLatex(ev.target.value);
-  };
+
+  const inputRef = useRef(content);
+
+  const setContent = useCallback(
+    (ev) => {
+      cellContext.dispatch({
+        type: "SET",
+        payload: { index, text: ev.target.value },
+      });
+    },
+    [inputRef]
+  );
 
   useEffect(() => {
-    inputRef.current.addEventListener("input", inputChange);
-    cellContext.dispatch({
-      type: "SET",
-      payload: { index, text: inputRef.current.value },
-    });
-    console.log(cellContext.state.cells[index]);
-    setLatex(() => {
-      return cellContext.state.cells[index].defaultContent;
-    });
-  }, [latex]);
+    inputRef.current.value = content;
+    inputRef.current.addEventListener("input", setContent);
+  }, [inputRef, content, setContent]);
 
   return (
     <div className="cell">
       <MDtitle title={title} />
       <math-field ref={inputRef} id={order}>
-        {latex}
+        {inputRef.current.value}
       </math-field>
       <div className="button-grid">
         <textarea
@@ -69,8 +73,11 @@ const Cell = ({ index, add, remove }) => {
           className="output"
           placeholder="Your Latex output here"
           rows="5"
-          ref={outputRef}
-          onChange={(ev) => (inputRef.current.value = ev.target.value)}
+          value={content}
+          onChange={(ev) => {
+            setContent(ev);
+            inputRef.current.value = ev.target.value;
+          }}
         />
         <div className="buttons">
           <button className="add" onClick={add}>
