@@ -17,19 +17,6 @@ const reducer = (state, action) => {
     return { ...state, cells: newCells };
   }
 
-  if (action.type === "ADD_TEXT") {
-    const index = state.cells.findIndex(
-      (cell) => cell.id === action.payload.id
-    );
-    const newCells = [...state.cells];
-    newCells[index] = {
-      ...newCells[index],
-      defaultContent:
-        newCells[index].defaultContent + " " + action.payload.text,
-    };
-    return { ...state, cells: newCells };
-  }
-
   if (action.type === "SET") {
     const index = action.payload.index;
     const text = action.payload.text;

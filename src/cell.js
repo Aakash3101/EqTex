@@ -1,10 +1,4 @@
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  useContext,
-  useCallback,
-} from "react";
+import React, { useState, useEffect, useRef, useContext } from "react";
 import "mathlive";
 import MDEditor from "@uiw/react-md-editor";
 import { CellContext } from "./App";
@@ -43,29 +37,24 @@ const Cell = ({ index, add, remove }) => {
   const order = cellContext.state.cells[index].id;
   const title = cellContext.state.cells[index].title;
   const content = cellContext.state.cells[index].defaultContent;
-
   const inputRef = useRef(content);
 
-  const setContent = useCallback(
-    (ev) => {
-      cellContext.dispatch({
-        type: "SET",
-        payload: { index, text: ev.target.value },
-      });
-    },
-    [inputRef]
-  );
+  const setContent = (ev) => {
+    cellContext.dispatch({
+      type: "SET",
+      payload: { index, text: ev.target.value },
+    });
+  };
 
   useEffect(() => {
-    inputRef.current.value = content;
     inputRef.current.addEventListener("input", setContent);
-  }, [inputRef, content, setContent]);
+  }, [inputRef.current.value]);
 
   return (
     <div className="cell">
       <MDtitle title={title} />
       <math-field ref={inputRef} id={order}>
-        {inputRef.current.value}
+        {content}
       </math-field>
       <div className="button-grid">
         <textarea

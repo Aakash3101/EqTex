@@ -1,11 +1,27 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import { convertLatexToMarkup } from "mathlive";
 import { symbols } from "./mathsymbols";
 import Parser from "html-react-parser";
-import { CellContext } from "./App";
+
+const Buttons = React.memo(({ type, sendText }) => {
+  return (
+    <>
+      {symbols[type].map((symbol) => {
+        return (
+          <button
+            key={symbol}
+            className="sym-button"
+            onClick={() => sendText(symbol)}
+          >
+            {Parser(convertLatexToMarkup(symbol))}
+          </button>
+        );
+      })}
+    </>
+  );
+});
 
 const Symbols = ({ type }) => {
-  const cellContext = useContext(CellContext);
   const [activeElement, setActiveElement] = useState(document.activeElement);
   useEffect(() => {
     const onFocus = (ev) => {
@@ -21,28 +37,15 @@ const Symbols = ({ type }) => {
 
   const sendText = (data) => {
     if (activeElement.tagName === "MATH-FIELD") {
-      cellContext.dispatch({
-        type: "ADD_TEXT",
-        payload: { id: activeElement.id, text: data },
-      });
+      activeElement.insert(data);
     }
   };
 
   return (
     <div className="symbols">
-      {symbols[type].map((symbol) => {
-        return (
-          <button
-            key={symbol}
-            className="sym-button"
-            onClick={() => sendText(symbol)}
-          >
-            {Parser(convertLatexToMarkup(symbol))}
-          </button>
-        );
-      })}
+      <Buttons type={type} sendText={sendText} />
     </div>
   );
 };
 
-export default Symbols;
+export default React.memo(Symbols);
