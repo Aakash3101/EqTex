@@ -41,7 +41,8 @@ math-field {
 
 .grid-container {
   display: grid;
-  grid-template-columns: 30% auto;
+  grid-template-columns: 32% auto;
+  /* height: 47rem; */
   height: 90vh;
 }
 
@@ -50,13 +51,14 @@ math-field {
   padding: 0.5rem;
   border: 0.25rem solid #000;
   background-color: rgba(170, 170, 170, 0.51);
+  height: inherit;
 }
 
 .workspace {
   margin: 1rem;
   padding: 0.5rem;
   border: 0.25rem solid #000;
-  overflow-y: scroll;
+  overflow-y: auto;
   background-color: rgba(170, 107, 170, 0.51);
 }
 
@@ -88,18 +90,19 @@ math-field {
 
 .symbol-headers {
   display: grid;
-  grid-template-columns: auto auto auto;
+  grid-template-columns: repeat(5, 1fr);
   grid-auto-rows: auto;
-  height: 15%;
+  height: 9rem;
+  max-width: inherit;
+  overflow: auto;
 }
 
 .grid-buttons {
   margin: 0.35rem;
-  border-radius: 1.2em;
+  border-radius: 1em;
   border: 0.1em solid rgba(0, 0, 0, 0.3);
   box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
   background-color: #fff;
-  font-size: 1rem;
 }
 
 span {
@@ -107,15 +110,43 @@ span {
 }
 
 .symbols {
-  width: 100%;
   display: grid;
-  grid-template-columns: repeat(6, 1fr);
-  grid-auto-rows: auto;
+  margin-top: 1rem;
+  max-height:37rem;
+  grid-auto-flow: row;
+  grid-template-columns: repeat(6, auto);
+  overflow-y: auto;
+  max-width: inherit;
 }
 
 .sym-button {
   margin: 0.1em;
   padding: 0.5em; 
   font-size: 1.1em;
-  /* flex: minmax(0, 1fr); */
+}
+
+.sym-button:nth-child(89) {
+  grid-column-start: span 2;
+}
+
+.sym-button:nth-child(90) {
+  grid-column-start: span 2;
+}
+
+.sym-button:nth-child(91) {
+  grid-column-start: span 2;
+}
+
+.sym-button:nth-child(92) {
+  grid-column-start: span 2;
+}
+
+*::-webkit-scrollbar {
+  width: 0.45em;
+}
+*::-webkit-scrollbar-track {
+  background: white;        /* color of the tracking area */
+}
+*::-webkit-scrollbar-thumb {
+  background-color: orange;    /* color of the scroll thumb */
 }

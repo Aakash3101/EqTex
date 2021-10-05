@@ -1,4 +1,10 @@
-import React, { useState, useEffect, useRef, useContext } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useContext,
+  useCallback,
+} from "react";
 import "mathlive";
 import MDEditor from "@uiw/react-md-editor";
 import { CellContext } from "./App";
@@ -39,21 +45,22 @@ const Cell = ({ index, add, remove }) => {
   const content = cellContext.state.cells[index].defaultContent;
   const inputRef = useRef(content);
 
-  const setContent = (ev) => {
+  const setContent = useCallback((ev) => {
     cellContext.dispatch({
       type: "SET",
       payload: { index, text: ev.target.value },
     });
-  };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
     inputRef.current.addEventListener("input", setContent);
-  }, [inputRef.current.value]);
+  });
 
   return (
     <div className="cell">
       <MDtitle title={title} />
-      <math-field ref={inputRef} id={order}>
+      <math-field ref={inputRef} id={order} smart-fence>
         {content}
       </math-field>
       <div className="button-grid">
@@ -67,6 +74,10 @@ const Cell = ({ index, add, remove }) => {
             setContent(ev);
             inputRef.current.value = ev.target.value;
           }}
+          autocapitalize="none"
+          autocomplete="off"
+          autocorrect="off"
+          spellcheck="false"
         />
         <div className="buttons">
           <button className="add" onClick={add}>

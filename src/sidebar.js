@@ -3,13 +3,19 @@ import Symbols from "./symbols";
 
 const buttonsList = [
   { id: 1, name: "Math", type: "math" },
-  { id: 2, name: "Binary Operators", type: "binary" },
-  { id: 3, name: "Trignometry", type: "trigno" },
-  { id: 4, name: "Keywords", type: "keyword" },
-  { id: 5, name: "Operators", type: "operators" },
-  { id: 6, name: "Logic", type: "logic" },
-  { id: 7, name: "Arrows (1)", type: "arrows1" },
-  { id: 8, name: "Arrows (2)", type: "arrows2" },
+  { id: 2, name: "Trignometry", type: "trigno" },
+  { id: 3, name: "Keywords", type: "keyword" },
+  { id: 4, name: "Operators", type: "operators" },
+  { id: 5, name: "Logic", type: "logic" },
+  { id: 6, name: "Arrows", type: "arrows" },
+  { id: 7, name: "Accents", type: "accents" },
+  { id: 8, name: "Sets", type: "sets" },
+  { id: 9, name: "Greek", type: "greek" },
+  { id: 10, name: "Symbols", type: "symbols" },
+  { id: 11, name: "Brackets", type: "brackets" },
+  { id: 12, name: "Binary Operators", type: "binary" },
+  { id: 13, name: "Relational operators", type: "relation" },
+  { id: 14, name: "Chemical Equations", type: "chemical" },
 ];
 
 const Sidebar = () => {
