@@ -1,27 +1,9 @@
-import React, { useReducer } from "react";
+import React, { useContext } from "react";
+import { CellContext } from "./App";
 import Cell from "./cell";
 
-const reducer = (state, action) => {
-  if (action.type === "ADD_CELL") {
-    const newCells = [...state.cells, action.payload];
-    return {
-      ...state,
-      cells: newCells,
-    };
-  }
-
-  if (action.type === "REMOVE_CELL") {
-    const newCells = state.cells.filter((cell) => cell.id !== action.payload);
-    return { ...state, cells: newCells };
-  }
-};
-
-const defaultState = {
-  cells: [{ id: 1, defaultContent: "\\frac{1}{2}", title: "## New Equation" }],
-};
-
 const Workspace = () => {
-  const [state, dispatch] = useReducer(reducer, defaultState);
+  const cellContext = useContext(CellContext);
 
   const addCell = () => {
     const newCell = {
@@ -29,25 +11,17 @@ const Workspace = () => {
       defaultContent: "x^2 + 3x + 2 = 0",
       title: "## New Equation",
     };
-    dispatch({ type: "ADD_CELL", payload: newCell });
+    cellContext.dispatch({ type: "ADD_CELL", payload: newCell });
   };
 
   const removeCell = (id) => {
-    dispatch({ type: "REMOVE_CELL", payload: id });
+    cellContext.dispatch({ type: "REMOVE_CELL", payload: id });
   };
-
   return (
     <div className="workspace">
-      {state.cells.map((cell) => {
+      {cellContext.state.cells.map((cell, index) => {
         return (
-          <Cell
-            key={cell.id}
-            order={cell.id}
-            content={cell.defaultContent}
-            title={cell.title}
-            add={addCell}
-            remove={removeCell}
-          />
+          <Cell key={cell.id} index={index} add={addCell} remove={removeCell} />
         );
       })}
     </div>

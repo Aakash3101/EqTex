@@ -1,6 +1,13 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useContext,
+  useCallback,
+} from "react";
 import "mathlive";
 import MDEditor from "@uiw/react-md-editor";
+import { CellContext } from "./App";
 
 const MDtitle = ({ title }) => {
   const [value, setValue] = useState(title);
@@ -31,39 +38,46 @@ const MDtitle = ({ title }) => {
   );
 };
 
-const Cell = ({ order, content, title, add, remove }) => {
-  const [latex, setLatex] = useState(content);
-  const outputRef = useRef();
-  const inputRef = useRef();
+const Cell = ({ index, add, remove }) => {
+  const cellContext = useContext(CellContext);
+  const order = cellContext.state.cells[index].id;
+  const title = cellContext.state.cells[index].title;
+  const content = cellContext.state.cells[index].defaultContent;
+  const inputRef = useRef(content);
+
+  const setContent = useCallback((ev) => {
+    cellContext.dispatch({
+      type: "SET",
+      payload: { index, text: ev.target.value },
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
   useEffect(() => {
-    inputRef.current.addEventListener("input", (ev) => {
-      outputRef.current.value = ev.target.value;
-      setLatex(ev.target.value);
-    });
-    outputRef.current.addEventListener("input", (ev) => {
-      inputRef.current.value = ev.target.value;
-      setLatex(ev.target.value);
-    });
-  }, [outputRef, inputRef]);
+    inputRef.current.addEventListener("input", setContent);
+  });
 
   return (
     <div className="cell">
-      {/* <textarea
-        className="output"
-        placeholder="Title"
-        rows="3"
-        style={{ width: "97%" }}
-      /> */}
       <MDtitle title={title} />
-      <math-field ref={inputRef}>{latex}</math-field>
+      <math-field ref={inputRef} id={order} smart-fence>
+        {content}
+      </math-field>
       <div className="button-grid">
         <textarea
           data-provide="markdown"
           className="output"
           placeholder="Your Latex output here"
           rows="5"
-          ref={outputRef}
+          value={content}
+          onChange={(ev) => {
+            setContent(ev);
+            inputRef.current.value = ev.target.value;
+          }}
+          autocapitalize="none"
+          autocomplete="off"
+          autocorrect="off"
+          spellcheck="false"
         />
         <div className="buttons">
           <button className="add" onClick={add}>
