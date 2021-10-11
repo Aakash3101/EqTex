@@ -1,3 +1,6 @@
+@import url('https://fonts.googleapis.com/css?family=Shadows+Into+Light');
+@import url('https://fonts.googleapis.com/css?family=Lato');
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
@@ -5,7 +8,11 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: cornflowerblue;
+  background-color: #1e2530;
+}
+
+#root {
+  height: 100vh;
 }
 
 code {
@@ -13,58 +20,85 @@ code {
     monospace;
 }
 
+
 math-field {
-  font-size: 24px;
+  font-size: 2rem;
   margin: 0.5em;
-  padding: 8px;
-  border-radius: 8px;
-  border: 1px solid rgba(0, 0, 0, 0.3);
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  padding: 0.3em;
+  border-radius: 0.3em;
   background-color: #fff;
 }
 
 .cell {
-  margin: 2em;
-  border-radius: 8px;
-  border: 5px solid #000;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  margin: 1em;
+  margin-bottom: 1.4em;
+  border-radius: 0.3em;
+  border: 0.01em solid #000;
+  box-shadow: 0 0 0.3em rgba(0, 0, 0, 0.8);
+  background-color: #334756;
+}
+
+.header {
+  text-align: center;
+  padding: 0.1em;
+  font-size: 2.5rem;
+  color: white;
+  background-color: #1e2530;
+  font-family: 'Shadows Into Light', sans-serif;
+}
+
+.footer {
+  padding: 0.25em;
+  font-size: 1rem;
+  background-color: #1e2530;
+  color: lightgray;
+  height: 2rem;
+  display: grid;
+  grid-template-columns: auto auto;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.github {
+  padding-right: 1rem;
+  justify-self: center;
+}
+
+a {
+  color: white
 }
 
 .output {
-  width: 70%;
+  width: 80%;
+  font-size: 1.15em;
   margin: 0.8rem;
   padding: 0.2rem;
-  border-radius: 8px;
-  border: 2px solid #000;
-  box-shadow: 0 0 8px rgba(0, 0, 0, 0.2);
+  border-radius: 0.5em;
+  border: 0.15em solid #000;
+  box-shadow: 0 0 0.3em rgba(0, 0, 0, 0.5);
 }
 
 .grid-container {
   display: grid;
   grid-template-columns: 32% auto;
-  /* height: 47rem; */
-  height: 90vh;
+  justify-content: stretch;
+  height: 95%;
 }
 
 .sidebar {
-  margin: 1rem;
   padding: 0.5rem;
-  border: 0.25rem solid #000;
-  background-color: rgba(170, 170, 170, 0.51);
-  height: inherit;
+  border: 0.05em solid #000;
+  background-color: #5d6879;
+  justify-content: stretch;
 }
 
 .workspace {
-  margin: 1rem;
   padding: 0.5rem;
-  border: 0.25rem solid #000;
+  border: 0.05em solid #000;
   overflow-y: auto;
-  background-color: rgba(170, 107, 170, 0.51);
+  background-color: #5d6879;
 }
 
-.title {
-  text-align: center;
-}
 
 .button-grid {
   display: flex;
@@ -90,14 +124,18 @@ math-field {
 
 .symbol-headers {
   display: grid;
+  margin-top: 0.7em;
   grid-template-columns: repeat(5, 1fr);
   grid-auto-rows: auto;
-  height: 9rem;
+  height: 16%;
   max-width: inherit;
   overflow: auto;
 }
 
 .grid-buttons {
+  font-size: 0.99rem;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
   margin: 0.35rem;
   border-radius: 1em;
   border: 0.1em solid rgba(0, 0, 0, 0.3);
@@ -111,10 +149,30 @@ span {
 
 .symbols {
   display: grid;
-  margin-top: 1rem;
-  max-height:37rem;
+  margin-top: 0.5rem;
+  max-height: 41.8rem;
   grid-auto-flow: row;
   grid-template-columns: repeat(6, auto);
+  overflow-y: auto;
+  max-width: inherit;
+}
+
+#chemical .symbols {
+  display: grid;
+  margin-top: 0.5rem;
+  max-height: 41rem;
+  grid-auto-flow: row;
+  grid-template-columns: repeat(4, auto);
+  overflow-y: auto;
+  max-width: inherit;
+}
+
+#math .symbols {
+  display: grid;
+  margin-top: 0.5rem;
+  max-height: 41rem;
+  grid-auto-flow: row;
+  grid-template-columns: repeat(5, 1fr);
   overflow-y: auto;
   max-width: inherit;
 }
@@ -125,28 +183,40 @@ span {
   font-size: 1.1em;
 }
 
-.sym-button:nth-child(89) {
+#arrows .sym-button:nth-child(89) {
   grid-column-start: span 2;
 }
 
-.sym-button:nth-child(90) {
+#arrows .sym-button:nth-child(90) {
   grid-column-start: span 2;
 }
 
-.sym-button:nth-child(91) {
+#arrows .sym-button:nth-child(91) {
   grid-column-start: span 2;
 }
 
-.sym-button:nth-child(92) {
+#arrows .sym-button:nth-child(92) {
   grid-column-start: span 2;
 }
 
-*::-webkit-scrollbar {
-  width: 0.45em;
+#chemical .sym-button:nth-child(14) {
+  grid-column-start: span 2;
 }
-*::-webkit-scrollbar-track {
-  background: white;        /* color of the tracking area */
+
+#chemical .sym-button:nth-child(15) {
+  grid-column-start: span 1;
 }
-*::-webkit-scrollbar-thumb {
-  background-color: orange;    /* color of the scroll thumb */
+
+#chemical .sym-button:nth-child(16) {
+  grid-column-start: span 2;
 }
+
+#chemical .sym-button:nth-child(17) {
+  grid-column-start: span 2;
+}
+
+/* 
+*::-webkit-scrollbar {width: 0.45em;}
+*::-webkit-scrollbar-track {background: white;}
+*::-webkit-scrollbar-thumb {background-color: gray;}
+*/

@@ -9,11 +9,12 @@ const Buttons = React.memo(({ type, sendText }) => {
       {symbols[type].map((symbol) => {
         return (
           <button
-            key={symbol}
+            key={symbol.id}
             className="sym-button"
-            onClick={() => sendText(symbol)}
+            title={symbol.display}
+            onClick={() => sendText(symbol.display)}
           >
-            {Parser(convertLatexToMarkup(symbol))}
+            {Parser(convertLatexToMarkup(symbol.display))}
           </button>
         );
       })}

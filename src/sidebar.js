@@ -41,8 +41,9 @@ const Sidebar = () => {
           );
         })}
       </div>
-      <br />
-      <Symbols type={type} />
+      <div id={type}>
+        <Symbols type={type} />
+      </div>
     </div>
   );
 };

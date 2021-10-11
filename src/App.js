@@ -18,7 +18,8 @@ const reducer = (state, action) => {
   }
 
   if (action.type === "SET") {
-    const index = action.payload.index;
+    const id = action.payload.order;
+    const index = state.cells.findIndex((cell) => cell.id === id);
     const text = action.payload.text;
     const newCells = [...state.cells];
     newCells[index] = {
@@ -55,6 +56,16 @@ function App() {
         <Sidebar />
         <Workspace />
       </div>
+      <footer>
+        <div className="footer">
+          <div>Copyright © 2021</div>
+          <a href="https://github.com/Aakash3101/EqTex">
+            <div className="github">
+              <i className="fa fa-github" style={{ fontSize: "1.5rem" }} />
+            </div>
+          </a>
+        </div>
+      </footer>
     </CellContext.Provider>
   );
 }
