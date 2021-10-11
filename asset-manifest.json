@@ -1,23 +1,23 @@
 {
   "files": {
-    "main.css": "/EqTex/static/css/main.b3254529.chunk.css",
-    "main.js": "/EqTex/static/js/main.1a1ae777.chunk.js",
-    "main.js.map": "/EqTex/static/js/main.1a1ae777.chunk.js.map",
+    "main.css": "/EqTex/static/css/main.0219504b.chunk.css",
+    "main.js": "/EqTex/static/js/main.9348957e.chunk.js",
+    "main.js.map": "/EqTex/static/js/main.9348957e.chunk.js.map",
     "runtime-main.js": "/EqTex/static/js/runtime-main.fe8cdd4e.js",
     "runtime-main.js.map": "/EqTex/static/js/runtime-main.fe8cdd4e.js.map",
     "static/css/2.dab640db.chunk.css": "/EqTex/static/css/2.dab640db.chunk.css",
-    "static/js/2.f77d7dd6.chunk.js": "/EqTex/static/js/2.f77d7dd6.chunk.js",
-    "static/js/2.f77d7dd6.chunk.js.map": "/EqTex/static/js/2.f77d7dd6.chunk.js.map",
+    "static/js/2.0ae3b9fc.chunk.js": "/EqTex/static/js/2.0ae3b9fc.chunk.js",
+    "static/js/2.0ae3b9fc.chunk.js.map": "/EqTex/static/js/2.0ae3b9fc.chunk.js.map",
     "index.html": "/EqTex/index.html",
     "static/css/2.dab640db.chunk.css.map": "/EqTex/static/css/2.dab640db.chunk.css.map",
-    "static/css/main.b3254529.chunk.css.map": "/EqTex/static/css/main.b3254529.chunk.css.map",
-    "static/js/2.f77d7dd6.chunk.js.LICENSE.txt": "/EqTex/static/js/2.f77d7dd6.chunk.js.LICENSE.txt"
+    "static/css/main.0219504b.chunk.css.map": "/EqTex/static/css/main.0219504b.chunk.css.map",
+    "static/js/2.0ae3b9fc.chunk.js.LICENSE.txt": "/EqTex/static/js/2.0ae3b9fc.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.fe8cdd4e.js",
     "static/css/2.dab640db.chunk.css",
-    "static/js/2.f77d7dd6.chunk.js",
-    "static/css/main.b3254529.chunk.css",
-    "static/js/main.1a1ae777.chunk.js"
+    "static/js/2.0ae3b9fc.chunk.js",
+    "static/css/main.0219504b.chunk.css",
+    "static/js/main.9348957e.chunk.js"
   ]
 }
