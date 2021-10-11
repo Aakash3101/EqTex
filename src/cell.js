@@ -48,7 +48,7 @@ const Cell = ({ index, add, remove }) => {
   const setContent = useCallback((ev) => {
     cellContext.dispatch({
       type: "SET",
-      payload: { index, text: ev.target.value },
+      payload: { order, text: ev.target.value },
     });
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
@@ -65,19 +65,19 @@ const Cell = ({ index, add, remove }) => {
       </math-field>
       <div className="button-grid">
         <textarea
-          data-provide="markdown"
+          // data-provide="markdown"
           className="output"
           placeholder="Your Latex output here"
-          rows="5"
+          rows="4"
           value={content}
           onChange={(ev) => {
             setContent(ev);
             inputRef.current.value = ev.target.value;
           }}
-          autocapitalize="none"
-          autocomplete="off"
-          autocorrect="off"
-          spellcheck="false"
+          autoCapitalize="none"
+          autoComplete="off"
+          autoCorrect="off"
+          spellCheck="false"
         />
         <div className="buttons">
           <button className="add" onClick={add}>
