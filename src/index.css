@@ -122,6 +122,30 @@ a {
   width: 3rem;
 }
 
+.copy_paste {
+  height: 2.5rem;
+  width: 3rem;
+}
+
+.tooltip {
+  position: relative;
+  display: inline-block;
+}
+
+.tooltip .tooltiptext {
+  width: 3rem;
+  background-color: black;
+  color: #fff;
+  text-align: center;
+  border-radius: 0.3rem;
+  padding: 0.4rem;
+  position: absolute;
+  z-index: 1;
+  bottom:120%;
+  left: -20%;
+  transition: opacity 0.3s;
+}
+
 .symbol-headers {
   display: grid;
   margin-top: 0.7em;
@@ -214,9 +238,3 @@ span {
 #chemical .sym-button:nth-child(17) {
   grid-column-start: span 2;
 }
-
-/* 
-*::-webkit-scrollbar {width: 0.45em;}
-*::-webkit-scrollbar-track {background: white;}
-*::-webkit-scrollbar-thumb {background-color: gray;}
-*/

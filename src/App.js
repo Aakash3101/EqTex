@@ -13,8 +13,12 @@ const reducer = (state, action) => {
   }
 
   if (action.type === "REMOVE_CELL") {
-    const newCells = state.cells.filter((cell) => cell.id !== action.payload);
-    return { ...state, cells: newCells };
+    if (state.cells.length > 1) {
+      const newCells = state.cells.filter((cell) => cell.id !== action.payload);
+      return { ...state, cells: newCells };
+    } else {
+      return { ...state };
+    }
   }
 
   if (action.type === "SET") {
