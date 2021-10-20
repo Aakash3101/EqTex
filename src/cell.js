@@ -44,6 +44,7 @@ const Cell = ({ index, add, remove }) => {
   const title = cellContext.state.cells[index].title;
   const content = cellContext.state.cells[index].defaultContent;
   const inputRef = useRef(content);
+  const [copy, setCopy] = useState(false);
 
   const setContent = useCallback((ev) => {
     cellContext.dispatch({
@@ -80,7 +81,29 @@ const Cell = ({ index, add, remove }) => {
           spellCheck="false"
         />
         <div className="buttons">
-          <button className="add" onClick={add}>
+          <div className="tooltip">
+            <button
+              className="copy_paste"
+              title="Clipboard"
+              onClick={() => {
+                navigator.clipboard.writeText(inputRef.current.value);
+                setCopy(true);
+                setTimeout(() => {
+                  setCopy(false);
+                }, 1000);
+              }}
+            >
+              {copy ? <span className="tooltiptext">Copied!</span> : null}
+              <img
+                src="https://cdn1.iconfinder.com/data/icons/soccer-football-6/512/N_T_517Artboard_1_copy_13-128.png"
+                alt="copy to clipboard"
+                style={{
+                  height: "1.5rem",
+                }}
+              />
+            </button>
+          </div>
+          <button className="add" title="Add new cell" onClick={add}>
             <img
               src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/plus-512.png"
               alt="add-button"
@@ -89,7 +112,11 @@ const Cell = ({ index, add, remove }) => {
               }}
             />
           </button>
-          <button className="delete" onClick={() => remove(order)}>
+          <button
+            className="delete"
+            title="Delete current cell"
+            onClick={() => remove(order)}
+          >
             <img
               src="https://cdn4.iconfinder.com/data/icons/eon-ecommerce-i-1/32/trashcan_delete_remove-128.png"
               alt="delete-button"
