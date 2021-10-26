@@ -167,6 +167,18 @@ a {
   background-color: #fff;
 }
 
+.grid-button-active {
+  font-size: 0.99rem;
+  font-family: 'Lato', sans-serif;
+  font-weight: 500;
+  margin: 0.35rem;
+  border-radius: 1em;
+  border: 0.1em solid rgba(0, 0, 0, 0.3);
+  box-shadow: 0 0 1em rgba(0, 0, 0, 0.2);
+  background-color: #334756;
+  color: white;
+}
+
 span {
   cursor: pointer;
 }
