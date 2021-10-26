@@ -33,7 +33,9 @@ const Sidebar = () => {
           return (
             <button
               key={button.id}
-              className="grid-buttons"
+              className={
+                type === button.type ? "grid-button-active" : "grid-buttons"
+              }
               onClick={() => showSymbols(button.type)}
             >
               {button.name}
