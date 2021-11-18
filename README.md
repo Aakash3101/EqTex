@@ -8,6 +8,8 @@ on the user's input (mathematical equation).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+Find the [Project Report](https://drive.google.com/file/d/1z9ymEcThvhNagxnZbrUefjMJV3FvkUli/view?usp=sharing) here.
+
 ## Available Scripts
 
 In the project directory, you can run:
